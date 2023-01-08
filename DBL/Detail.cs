@@ -8,13 +8,13 @@ namespace DBLib
     public partial class Detail : EntityLayout
     {
         [Key]
-        public override long Id { get; set; }
+        public override long Id { get; set; } // Поле ключа таблицы (автогенерация)
 
-        public string? Title { get; set; } //          ? == null допустим
+        public string? Title { get; set; } //  Поле таблицы (необязательно)
 
-        public string? FullName { get; set; }
+        public string? FullName { get; set; } //  Поле таблицы (необязательно)
 
-        public byte[]? Contours { get; set; }
+        public byte[]? Contours { get; set; } //  Поле таблицы (необязательно)
 
         public virtual ICollection<CuttingMapDetail> CuttingMapDetails { get; } = new List<CuttingMapDetail>();
 

@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DBLib
 {
-    /*
-     * Общие свойства сущностей
-     * */
-    public abstract class EntityLayout// : ICloneable: IDisposable
+    public abstract class EntityLayout// Абстрактный класс, родительский всем моделям базы данных                                         На будущее, сделать: ICloneable: IDisposable
     {
 
-        [Key]
-        public virtual long Id { get; set; }
-        public virtual new string ToString() => ""; 
+        [Key] //Ключ
+        public virtual long Id { get; set; } //Ключ таблиц
+        public virtual new string ToString() => ""; //Определение метода для преобразования к строке
         //public interface IDisposable { void Dispose(); }
         //public virtual object Clone() => MemberwiseClone(); //Переопределить 
     }

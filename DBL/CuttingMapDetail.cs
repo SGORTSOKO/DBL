@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DBLib
 {
@@ -8,10 +6,10 @@ namespace DBLib
     public partial class CuttingMapDetail : EntityLayout
     {
         [Key]
-        public override long Id { get; set; }
-        public long CuttingMapId { get; set; }
+        public override long Id { get; set; } // Поле ключа таблицы (генерируется автоматически)
+        public long CuttingMapId { get; set; } // Поле таблицы (обязательное)
 
-        public long DetailId { get; set; }
+        public long DetailId { get; set; } // Поле таблицы (обязательное)
 
         public virtual CuttingMap CuttingMap { get; set; } = null!;
 

@@ -8,15 +8,15 @@ namespace DBLib
     public partial class Sheet : EntityLayout
     {
         [Key]
-        public override long Id { get; set; }
+        public override long Id { get; set; } // Поле ключа таблицы (генерируется автоматически)
 
-        public string? Title { get; set; }
+        public string? Title { get; set; } //  Поле таблицы (необязательно)
 
-        public string? FullName { get; set; }
+        public string? FullName { get; set; }  //  Поле таблицы (необязательно)
 
-        public float? Width { get; set; }
+        public float? Width { get; set; }  //  Поле таблицы (необязательно)
 
-        public float? Height { get; set; }
+        public float? Height { get; set; }  //  Поле таблицы (необязательно)
 
         public virtual ICollection<CuttingMap> CuttingMaps { get; } = new List<CuttingMap>();
 

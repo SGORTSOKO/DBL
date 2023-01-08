@@ -1,32 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace DBLib
+namespace DBLib //пространство имен библиотеки
 {
 
-    public partial class CuttingContext : DbContext
+    public partial class CuttingContext : DbContext //создание контекста взаимодействия с бд, дочернего DbContext от MS EFC
     {
-        private string server;
-        public CuttingContext(string currentserver) => this.server = currentserver;
+        private string server; //параметр для инициализации метода optionsBuilder.UseSqlServer(server) поделючения к бд
+        public CuttingContext(string currentserver) => this.server = currentserver; //конструктор
 
-        public CuttingContext(DbContextOptions<CuttingContext> options, string currentserver)
+        public CuttingContext(DbContextOptions<CuttingContext> options, string currentserver) // конструктор
             : base(options) => this.server = currentserver;
 
-        public virtual DbSet<CuttingMap> CuttingMaps { get; set; }
+        public virtual DbSet<CuttingMap> CuttingMaps { get; set; } //Множество модели CuttingMap, которая далее в коде зовется CuttingMaps
 
-        public virtual DbSet<CuttingMapDetail> CuttingMapDetails { get; set; }
+        public virtual DbSet<CuttingMapDetail> CuttingMapDetails { get; set; } //Множество модели CuttingMapDetail, которая далее в коде зовется CuttingMapDetails
 
-        public virtual DbSet<Detail> Details { get; set; }
+        public virtual DbSet<Detail> Details { get; set; } //Множество модели Detail, которая далее в коде зовется Details
 
-        public virtual DbSet<Material> Materials { get; set; }
+        public virtual DbSet<Material> Materials { get; set; } //Множество модели Material, которая далее в коде зовется Materials
 
-        public virtual DbSet<Sheet> Sheets { get; set; }
+        public virtual DbSet<Sheet> Sheets { get; set; } //Множество модели Sheet, которая далее в коде зовется Sheets
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseSqlServer(server); //Подключение к бд (аналогично: optionsBuilder.UseSqlite("Data Source=helloapp456.db");)
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder) //Метод, генерирующий базу данных по вызову Database.EnsureCreated()
         {
             modelBuilder.Entity<CuttingMap>(entity =>
             {

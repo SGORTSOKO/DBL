@@ -6,19 +6,22 @@ namespace DBLib
     public class DBLibrary : CuttingContext
     {
         public DBLibrary(string currentserver) : base(currentserver) => Database.EnsureCreated(); //Гарантия, что БД существует (иначе создать) (или await Database.EnsureCreatedAsync()), если есть, то возвращает true// Database.EnsureDeleted() и await Database.EnsureDeletedAsync() - удаление (можно использовать для пересоздания БД)//Database.CanConnect() и await Database.CanConnectAsync() - узнать доступность БД
-        public long CreateObject<T>(T currentobject) where T:  EntityLayout
+        public void CreateTooManyObjects(List<EntityLayout> objects)
+        {
+
+        }
+        public T CreateObject<T>(T currentobject) where T:  EntityLayout
         { 
             this.Add<T>(currentobject);
             this.SaveChanges();
-            return currentobject.Id;
+            return currentobject;
         }
-        public List<long> CreateObjects<T>(List<T> currentobjects) where T : EntityLayout
+        public List<T> CreateObjects<T>(List<T> currentobjects) where T : EntityLayout
         {
             List<long> timed = new();
             this.AddRange(currentobjects);
             this.SaveChanges();
-            currentobjects.ForEach(obj => timed.Add(obj.Id));
-            return timed;
+            return currentobjects;
         }
         public string ReadObjectStr<T>(long id) where T : EntityLayout
         {
@@ -85,14 +88,14 @@ namespace DBLib
                 this.SaveChanges();
             }
         }
-        public string CreateDB()
+        public string CreateDBCatalog()
         {
             if (this.Database.EnsureCreated())
                 return "DB has been created";
             else
                 return "DB was not created";
         }
-        public string DeleteDB()
+        public string DeleteDBCatalog()
         {
             if (this.Database.EnsureDeleted())
                 return "DB has been deleted";

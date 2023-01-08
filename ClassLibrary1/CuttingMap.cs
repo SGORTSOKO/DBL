@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace DBLib
 {
 
-    public partial class CuttingMap : EntityLayout
+    public partial class CuttingMap
     {
-        [Key]
-        public override long Id { get; set; }
+        public long Id { get; set; }
+
         public string? Title { get; set; }
 
         public string? FullName { get; set; }
@@ -22,8 +21,5 @@ namespace DBLib
         public virtual Material? Material { get; set; }
 
         public virtual Sheet? Sheet { get; set; }
-
-        public override string ToString() => Id.ToString() + ", " + Title?.ToString() + ", " + FullName?.ToString() + ", " + MaterialId?.ToString() + ", " + SheetId?.ToString();
-
     }
 };

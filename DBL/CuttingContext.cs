@@ -7,14 +7,11 @@ namespace DBLib
 
     public partial class CuttingContext : DbContext
     {
-        public CuttingContext()
-        {
-        }
+        private string server;
+        public CuttingContext(string currentserver) => this.server = currentserver;
 
-        public CuttingContext(DbContextOptions<CuttingContext> options)
-            : base(options)
-        {
-        }
+        public CuttingContext(DbContextOptions<CuttingContext> options, string currentserver)
+            : base(options) => this.server = currentserver;
 
         public virtual DbSet<CuttingMap> CuttingMaps { get; set; }
 
@@ -27,8 +24,7 @@ namespace DBLib
         public virtual DbSet<Sheet> Sheets { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-            => optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Cutting");
+            => optionsBuilder.UseSqlServer(server); //Подключение к бд (аналогично: optionsBuilder.UseSqlite("Data Source=helloapp456.db");)
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -80,7 +76,7 @@ namespace DBLib
 
                 entity.Property(e => e.FullName).HasMaxLength(200);
                 entity.Property(e => e.Title).HasMaxLength(100);
-            });
+            }); //.HasCheckConstraint("Age", "Age > 0 AND Age < 120"); Ввод ограничений на передаваемое значение
 
             modelBuilder.Entity<Sheet>(entity =>
             {
@@ -91,6 +87,7 @@ namespace DBLib
             });
 
             OnModelCreatingPartial(modelBuilder);
+
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

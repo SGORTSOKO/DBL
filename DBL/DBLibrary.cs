@@ -1,15 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.VisualBasic;
 
 namespace DBLib 
 {
     public class DBLibrary : CuttingContext
     {
         public DBLibrary(string currentserver) : base(currentserver) => Database.EnsureCreated(); //Гарантия, что БД существует (иначе создать) (или await Database.EnsureCreatedAsync()), если есть, то возвращает true// Database.EnsureDeleted() и await Database.EnsureDeletedAsync() - удаление (можно использовать для пересоздания БД)//Database.CanConnect() и await Database.CanConnectAsync() - узнать доступность БД
-        public void CreateTooManyObjects(List<EntityLayout> objects)
-        {
-
-        }
+        
         public T CreateObject<T>(T currentobject) where T:  EntityLayout
         { 
             this.Add<T>(currentobject);
@@ -49,15 +47,17 @@ namespace DBLib
             }
             return timed;
         }
-        public void UpdateObject<T>(T currentobject) where T : EntityLayout
+        public T UpdateObject<T>(T currentobject) where T : EntityLayout
         {
             Update(currentobject);
             this.SaveChanges();
+            return currentobject;
         }
-        public void UpdateObjects<T>(List<T> currentobjects) where T : EntityLayout
+        public List<T> UpdateObjects<T>(List<T> currentobjects) where T : EntityLayout
         {
             UpdateRange(currentobjects);
             this.SaveChanges();
+            return currentobjects;
         }
         public void RemoveObject<T>(T currentobject) where T : EntityLayout
         {
@@ -102,6 +102,11 @@ namespace DBLib
             else
                 return "DB was not deleted";
         }
+        public string GenerateDBRandomData()
+        {
+
+            return "Data Generated";
+        }
 
 
     }
@@ -113,12 +118,3 @@ public class InitClass
 }
 */
 //Scaffold-DbContext "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Cutting" Microsoft.EntityFrameworkCore.SqlServer - cs classes generation from DB
-
-//УДАЛЕНИЕ БАЗЫ
-//УДАЛЕНИЕ БАЗЫ
-//УДАЛЕНИЕ БАЗЫ
-//УДАЛЕНИЕ БАЗЫ
-//УДАЛЕНИЕ БАЗЫ
-//УДАЛЕНИЕ БАЗЫ
-//УДАЛЕНИЕ БАЗЫ
-//УДАЛЕНИЕ БАЗЫ

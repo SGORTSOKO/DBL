@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBLib", "ClassLibrary1\DBLib.csproj", "{69371631-9F40-4E38-BD7F-FA042E92DB24}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Checker", "Checker\Checker.csproj", "{CCD8348B-E456-40BB-949E-93124C12232A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBLib", "DBL\DBLib.csproj", "{BBEF4DCA-C866-44EC-96FC-6CDDAA56C1AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{69371631-9F40-4E38-BD7F-FA042E92DB24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{69371631-9F40-4E38-BD7F-FA042E92DB24}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{69371631-9F40-4E38-BD7F-FA042E92DB24}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69371631-9F40-4E38-BD7F-FA042E92DB24}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CCD8348B-E456-40BB-949E-93124C12232A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CCD8348B-E456-40BB-949E-93124C12232A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCD8348B-E456-40BB-949E-93124C12232A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCD8348B-E456-40BB-949E-93124C12232A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBEF4DCA-C866-44EC-96FC-6CDDAA56C1AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBEF4DCA-C866-44EC-96FC-6CDDAA56C1AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBEF4DCA-C866-44EC-96FC-6CDDAA56C1AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBEF4DCA-C866-44EC-96FC-6CDDAA56C1AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

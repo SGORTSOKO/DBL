@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\DBLib.csproj" />
+    <ProjectReference Include="..\DBL\DBLib.csproj" />
   </ItemGroup>
 
 </Project>

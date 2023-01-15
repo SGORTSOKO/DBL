@@ -5,11 +5,22 @@ namespace DBLib
 
     public partial class CuttingMapDetail : EntityLayout
     {
+        public CuttingMapDetail() { }
+        public CuttingMapDetail(long cuttingmapid, long detailid)
+        {
+            CuttingMapId = cuttingmapid;
+            DetailId = detailid;
+        }
+        public CuttingMapDetail(EntityLayout cuttingmap, EntityLayout detail)
+        {
+            CuttingMapId = cuttingmap.Id;
+            DetailId = detail.Id;
+        }
         [Key]
         public override long Id { get; set; } // Поле ключа таблицы (генерируется автоматически)
-        public long CuttingMapId { get; set; } // Поле таблицы (обязательное)
+        public override long CuttingMapId { get; set; } // Поле таблицы (обязательное)
 
-        public long DetailId { get; set; } // Поле таблицы (обязательное)
+        public override long DetailId { get; set; } // Поле таблицы (обязательное)
 
         public virtual CuttingMap CuttingMap { get; set; } = null!;
 

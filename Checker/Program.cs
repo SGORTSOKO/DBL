@@ -34,10 +34,20 @@ byte[] modulus =
 
 Console.WriteLine("Hello, World!");
 DBLibrary newInit = new DBLibrary("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog = Cutting");
+CuttingMap cuttingMap = new CuttingMap() { Title = "First Cutting Map", FullName = SSS(65, 35) };
+Detail detail = new Detail() { Title = "First Detail", FullName = SSS(55, 25) };
+Material material = new Material() { Title = "Fisrt Material", FullName = SSS(65, 25) };
+Sheet sheet = new Sheet() { Title = "Fisrt Sheet", FullName = SSS(65, 25) };
+CuttingMapDetail cuttingMapDetail = new CuttingMapDetail();
+EntityLayout.Union(sheet, sheet);
+/*
 for (int i = 0; i < 100; i++) 
     {
     newInit.CreateObject(new Detail() { Title = SSS(30, 12), FullName = SSS(80, 35) });
     }
+*/
+
+
 /*
 Detail TD1 = new Detail { Title = "Standart", FullName = "Standart Detail Number 2", Contours = modulus };
 Detail TD2 = new Detail { Title = "Standart", FullName = "Standart Detail Number 2", Contours = modulus };
